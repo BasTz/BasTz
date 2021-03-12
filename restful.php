@@ -7,15 +7,26 @@
     <title>Document</title>
 </head>
 <body onload = "loadDoc()" >
+    <div id = "out"></div>
     <script>
         function loadDoc(){
             let xhttp = new XMLHttpRequest();
             xhttp.onreadystatechange = function(){
                 console.log(this.readyState);
-                if(this.readyState == 4){
+                if(this.readyState == 4 && this.status == 200){
                     console.log(this.responseText);
-                    let data = JSON.parse(this.responseText);
-                    console.log(data);
+                    data = JSON.parse(this.responseText);
+                    doc = document.getElementById("out");
+                    Test = "<table border = '1'>";
+                    for(i = 0;i<data.length;i++){
+                        Test += "<tr>";
+                        for(key in data[i]){
+                            Test += "<td>" + data[i][key] + "</td>";
+                        }
+                        Test += "</tr>";
+                    }
+                    Test += "</table>";
+                    doc.innerHTML = Test;
                 }
             }
             xhttp.open("GET","rest.php",true);
