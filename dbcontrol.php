@@ -37,7 +37,4 @@
             }
         }
     }
-
-    $my_db = new db("root",null,"book",true);
-    $my_db->query("select * from user");
 ?>
