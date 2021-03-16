@@ -62,15 +62,20 @@
             document.getElementById("Cast").value = "";
             for(i = 0;i < jsonEx.length ; i++){
                 if(jsonEx[i].title == m.value){
-                    document.getElementById("Cast").value += jsonEx[i].cast;
-                    document.getElementById("Cast").value += "\n";
+                    for(y = 0;y < jsonEx[i].cast.length;y++){
+                        document.getElementById("Cast").value += jsonEx[i].cast[y];
+                        document.getElementById("Cast").value += "\n";
+                    }
+                    
                 }
             }
             document.getElementById("Genres").value = "";
             for(i = 0;i < jsonEx.length ; i++){
                 if(jsonEx[i].title == m.value){
-                    document.getElementById("Genres").value += jsonEx[i].genres;
-                    document.getElementById("Genres").value += "\n";
+                    for(y = 0;y < jsonEx[i].genres.length;y++){
+                        document.getElementById("Genres").value += jsonEx[i].genres[y];
+                        document.getElementById("Genres").value += "\n";
+                    }
                 }
             }
         }
