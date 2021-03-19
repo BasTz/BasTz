@@ -16,15 +16,21 @@
             }
         }
 
-        public function query($sql){
+        public function sel_data($sql){
             $result = $this->db->query($sql);
+            $this->text_debug($sql);
             $data = $result->fetch_all(MYSQLI_ASSOC);
-            if($this->debug_mode == true){
+            if($this->debug_mode){
                 echo "<pre>";
                 print_r($data);
                 echo "</pre>";
             }
             return $data;
+        }
+        
+        public function query($sql){
+            $result = $this->db->query($sql);
+            return $result;
         }
 
         public function close(){
